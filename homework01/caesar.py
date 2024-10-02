@@ -1,10 +1,5 @@
-import typing as tp
-
-
-def encrypt_caesar(plaintext: str, shift: int = 3) -> str:
+def encrypt_caesar(plaintext, shift: int = 3):
     """
-    Encrypts plaintext using a Caesar cipher.
-
     >>> encrypt_caesar("PYTHON")
     'SBWKRQ'
     >>> encrypt_caesar("python")
@@ -15,14 +10,23 @@ def encrypt_caesar(plaintext: str, shift: int = 3) -> str:
     ''
     """
     ciphertext = ""
-    # PUT YOUR CODE HERE
+    for char in plaintext:
+        if char.isalpha():  
+            shift_amount = shift % 26  
+            
+            if char.isupper():
+                shifted_char = chr(((ord(char) - ord('A') + shift_amount) % 26) + ord('A'))
+            else:
+                shifted_char = chr(((ord(char) - ord('a') + shift_amount) % 26) + ord('a'))
+        else:
+            shifted_char = char
+        ciphertext += shifted_char
     return ciphertext
 
 
-def decrypt_caesar(ciphertext: str, shift: int = 3) -> str:
-    """
-    Decrypts a ciphertext using a Caesar cipher.
 
+def decrypt_caesar(ciphertext, shift: int = 3):
+    """
     >>> decrypt_caesar("SBWKRQ")
     'PYTHON'
     >>> decrypt_caesar("sbwkrq")
@@ -33,14 +37,18 @@ def decrypt_caesar(ciphertext: str, shift: int = 3) -> str:
     ''
     """
     plaintext = ""
-    # PUT YOUR CODE HERE
+    for char in ciphertext:
+        if char.isalpha():  
+            shift_amount = shift % 26  
+            
+            if char.isupper():
+                shifted_char = chr(((ord(char) - ord('A') - shift_amount) % 26) + ord('A'))
+            else: 
+                shifted_char = chr(((ord(char) - ord('a') - shift_amount) % 26) + ord('a'))
+        else:
+            shifted_char = char  
+
+        plaintext += shifted_char
     return plaintext
-
-
-def caesar_breaker_brute_force(ciphertext: str, dictionary: tp.Set[str]) -> int:
-    """
-    Brute force breaking a Caesar cipher.
-    """
-    best_shift = 0
-    # PUT YOUR CODE HERE
-    return best_shift
+    
+    
