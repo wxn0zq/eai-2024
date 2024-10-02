@@ -1,3 +1,4 @@
+
 def encrypt_vigenere(plaintext, keyword):
     """
     >>> encrypt_vigenere("PYTHON", "A")
@@ -23,6 +24,7 @@ def encrypt_vigenere(plaintext, keyword):
 
 
 
+
 def decrypt_vigenere(ciphertext, keyword):
     """
     >>> decrypt_vigenere("PYTHON", "A")
@@ -44,3 +46,4 @@ def decrypt_vigenere(ciphertext, keyword):
         else:
             plaintext += ciphertext[i]
     return plaintext
+
